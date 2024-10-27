@@ -6,5 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class simpanan extends Model
 {
-    //
+    protected $table = 'simpanan';
+    protected $guarded = ['id'];
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
+    public function scopeFilter($query, array $filters)
+    {
+        $search = $filters["search"] ?? false;
+
+        $query->when($search, function ($query, $search) {
+            $query->where(function ($query) use ($search) {
+                $query->where("name", "like", "%" . $search . "%");
+            });
+        });
+    }
 }
