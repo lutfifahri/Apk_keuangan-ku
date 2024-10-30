@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('uang_masuk', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

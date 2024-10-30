@@ -8,7 +8,7 @@ class Pemabayaran extends Model
 {
     protected $table = 'pemabayaran';
     protected $guarded = ['id'];
-    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function scopeFilter($query, array $filters)
     {
