@@ -57,19 +57,22 @@
                         </div>
                         <span class="ml-3">Beli Barang</span>
                     </a>
-                    <a href="#" class="flex items-center px-4 py-2 rounded hover:bg-blue-600">
+                    <a wire:navigate href="{{ route('dipinjam') }}"
+                        class="flex items-center px-4 py-2 rounded {{ request()->routeIs('dipinjam') ? 'bg-blue-600' : 'hover:bg-blue-600' }}">
                         <div class="w-6 flex justify-center">
                             <i class="fas fa-hand-holding-usd text-lg"></i>
                         </div>
                         <span class="ml-3">Di Pinjam</span>
                     </a>
-                    <a href="#" class="flex items-center px-4 py-2 rounded hover:bg-blue-600">
+                    <a wire:navigate href="{{ route('simpan') }}"
+                        class="flex items-center px-4 py-2 rounded {{ request()->routeIs('simpan') ? 'bg-blue-600' : 'hover:bg-blue-600' }}">
                         <div class="w-6 flex justify-center">
                             <i class="fas fa-save text-lg"></i>
                         </div>
                         <span class="ml-3">Simpan</span>
                     </a>
-                    <a href="#" class="flex items-center px-4 py-2 rounded hover:bg-blue-600">
+                    <a wire:navigate href="{{ route('uangmasuk') }}"
+                        class="flex items-center px-4 py-2 rounded {{ request()->routeIs('uangmasuk') ? 'bg-blue-600' : 'hover:bg-blue-600' }}">
                         <div class="w-6 flex justify-center">
                             <i class="fas fa-money-bill-wave text-lg"></i>
                         </div>
@@ -135,11 +138,7 @@
                 </div>
             </footer>
         </main>
-
-
     </div>
-
-
 
     <!-- Scripts -->
     @livewireScripts

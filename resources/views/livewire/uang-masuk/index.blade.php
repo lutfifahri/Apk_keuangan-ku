@@ -2,7 +2,7 @@
     <!-- Home Icon and Title -->
     <div class="flex items-center mb-4">
         <div class="w-6 flex justify-center">
-            <i class="fas fa-shopping-cart text-lg"></i>
+            <i class="fas fa-money-bill-wave text-lg"></i>
         </div>
         <span class="ml-3 text-lg font-semibold">{{ $title }}</span>
     </div>
@@ -13,7 +13,7 @@
             <h3 class="text-2xl font-bold">
                 <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-plus text-lg"></i></a>
             </h3>
-            <input type="text" wire:model.live="search" placeholder="Search"
+            <input type="text"
                 class="border border-blue-500 rounded-lg px-4 py-2 shadow focus:outline-none focus:ring-2 focus:ring-blue-300"
                 placeholder="Search...">
         </div>
@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($belibarang as $item)
+                    @forelse ($uangmasuk as $item)
                         <tr class="hover:bg-gray-100">
                             <td class="py-2 px-4 border-b">{{ $loop->iteration }}</td>
                             <td class="py-2 px-4 border-b">{{ $item->name }}</td>
@@ -52,7 +52,7 @@
         </div>
         <br>
         <div class="col-12">
-            {{ $belibarang->links() }}
+            {{ $uangmasuk->links() }}
         </div>
     </div>
 

@@ -22,6 +22,13 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            GajiTableSeeder::class,
+            PembayaranTableSeeder::class,
+            BeliBarangTableSeeder::class,
+            DiPinjamTableSeeder::class,
+            SimpananTableSeeder::class,
+            UangMasukTableSeeder::class,
+            PerPagesTableSeeder::class,
         ]);
     }
 }

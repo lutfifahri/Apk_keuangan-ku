@@ -8,10 +8,12 @@
     </div>
 
     <!-- Main Content Area -->
-    <div class="container mx-auto p-6">
+    <div class="bg-white shadow-md rounded-lg p-6">
         <div class="flex justify-between items-center mb-5">
-            <h3 class="text-2xl font-bold">&nbsp;</h3>
-            <input type="text"
+            <h3 class="text-2xl font-bold">
+                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-plus text-lg"></i></a>
+            </h3>
+            <input type="text" wire:model.live="search" placeholder="Search"
                 class="border border-blue-500 rounded-lg px-4 py-2 shadow focus:outline-none focus:ring-2 focus:ring-blue-300"
                 placeholder="Search...">
         </div>
@@ -27,14 +29,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-100">
-                        <td class="py-2 px-4 border-b">1</td>
-                        <td class="py-2 px-4 border-b">Uang Wiffi</td>
-                        <td class="py-2 px-4 border-b">Pembayaran untuk wiffi bulan ini</td>
-                        <td class="py-2 px-4 border-b">Edit | Delete</td>
-                    </tr>
+                    @forelse ($Pemabayaran as $item)
+                        <tr class="hover:bg-gray-100">
+                            <td class="py-2 px-4 border-b">{{ $loop->iteration }}</td>
+                            <td class="py-2 px-4 border-b">{{ $item->name }}</td>
+                            <td class="py-2 px-4 border-b">{{ $item->keterangan }}</td>
+                            <td class="py-2 px-4 border-b">
+                                <a href="#" class="btn btn-sm btn-warning"><i
+                                        class="fas fa-pencil text-lg"></i></a> |
+                                <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash text-lg"></i></a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td class="py-2 px-4 border-b" colspan="4">
+                                <center>Not found</center>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
+        </div>
+        <br>
+        <div class="col-12">
+            {{ $Pemabayaran->links() }}
         </div>
     </div>
 

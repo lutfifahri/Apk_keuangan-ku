@@ -2,7 +2,7 @@
     <!-- Home Icon and Title -->
     <div class="flex items-center mb-4">
         <div class="w-6 flex justify-center">
-            <i class="fas fa-shopping-cart text-lg"></i>
+            <i class="fas fa-hand-holding-usd text-lg"></i>
         </div>
         <span class="ml-3 text-lg font-semibold">{{ $title }}</span>
     </div>
@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($belibarang as $item)
+                    @forelse ($dipinjam as $item)
                         <tr class="hover:bg-gray-100">
                             <td class="py-2 px-4 border-b">{{ $loop->iteration }}</td>
                             <td class="py-2 px-4 border-b">{{ $item->name }}</td>
@@ -42,7 +42,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="py-2 px-4 border-b" colspan="4">
+                            <td class="py-2 px-4 border-b" colspan="5">
                                 <center>Not found</center>
                             </td>
                         </tr>
@@ -52,7 +52,7 @@
         </div>
         <br>
         <div class="col-12">
-            {{ $belibarang->links() }}
+            {{ $dipinjam->links() }}
         </div>
     </div>
 

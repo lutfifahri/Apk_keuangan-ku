@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Livewire\BeliBarang;
+namespace App\Livewire\Dipinjam;
 
-use App\Models\Beli_Barang;
+use App\Models\Di_pinjam;
 use App\Models\per_page;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Url;
+use Illuminate\Support\Facades\DB;
 use Throwable;
-
 
 class Index extends Component
 {
@@ -50,8 +49,8 @@ class Index extends Component
 
     public function confirmedDelete()
     {
-        $belibarang = Beli_Barang::find($this->pk);
-        if (!$belibarang) {
+        $gaji = Di_pinjam::find($this->pk);
+        if (!$gaji) {
             $this->alert('error', 'Gagal', [
                 'message' => 'Data Service Lexus tidak ditemukan!',
             ]);
@@ -59,8 +58,8 @@ class Index extends Component
             DB::beginTransaction();
 
             try {
-                $belibarang->detailbelibarang()->delete();
-                $belibarang->delete();
+                $gaji->detailgaji()->delete();
+                $gaji->delete();
 
                 DB::commit();
 
@@ -80,22 +79,22 @@ class Index extends Component
     public function render()
     {
         if ($this->filter == "All") {
-            $this->belibarang = Beli_Barang::query()->filter([
+            $this->dipinjam = Di_pinjam::query()->filter([
                 'search' => $this->search,
             ])->orderByDesc('id')->paginate($this->per_page)->withQueryString();
         } else {
-            $this->belibarang = Beli_Barang::query()->filter([
+            $this->dipinjam = Di_pinjam::query()->filter([
                 'search' => $this->search,
                 'filter' => $this->filter,
             ])->orderByDesc('id')->paginate($this->per_page)->withQueryString();
         }
 
-        return view('livewire.beli-barang.index', [
-            'title'         => 'Beli Barang',
-            'belibarang'    => $this->belibarang,
-            'per_pages'     => per_page::all(),
+        return view('livewire.dipinjam.index', [
+            'title'     => 'Di Pinjam',
+            'dipinjam'  => $this->dipinjam,
+            'per_pages' => per_page::all(),
         ])->layout('layouts.app', [
-            'title' => 'Beli Barang' // Pass the title here
+            'title' => 'Di Pinjam' // Pass the title here
         ]);
     }
 }
